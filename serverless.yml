@@ -1,0 +1,29 @@
+org: nullrecursive
+app: challenges-integration
+service: challenges-integrations
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+functions:
+  createContacts:
+    handler: lambda/handler.createContacts
+  environment:
+    HUBSPOT_API_KEY: ${env:HUBSPOT_API_KEY}
+    HUBSPOT_BASE_URL: ${env:HUBSPOT_BASE_URL}
+    GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: ${env:GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY}
+    GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL: ${env:GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL}
+    GOOGLE_SHEETS_SPREADSHEET_ID: ${env:GOOGLE_SHEETS_SPREADSHEET_ID}
+    GOOGLE_SHEETS_RANGE: ${env:GOOGLE_SHEETS_RANGE}
+  events:
+    - http:
+        path: contacts
+        method: post
+
+plugins:
+  - serverless-dotenv-plugin
+
+custom:
+  dotenv:
+    basePath: ./

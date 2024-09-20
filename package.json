@@ -1,0 +1,26 @@
+{
+  "name": "challenges-integrtions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test:dev": "npx mocha -w --parallel src/tests/*.test.js",
+    "test": "npx mocha --parallel src/tests/*.test.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "googleapis": "^144.0.0"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "eslint": "^9.10.0",
+    "mocha": "^10.7.3",
+    "sinon": "^19.0.2"
+  }
+}
